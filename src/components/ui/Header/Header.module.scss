@@ -1,0 +1,101 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+
+  background-color: #dee1e8;
+}
+
+.appLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoImg {
+  width: 70px;
+  height: 70px;
+  margin-right: 5px;
+}
+
+.logoText {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.inputBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  margin-right: 10px;
+  padding: 10px 15px;
+
+  background-color: #f1eee8;
+  border: 1px solid #6ca8ee80;
+  border-radius: 10px;
+
+  outline: none;
+
+  transition-property: color, background-color;
+  transition-duration: 0.25s;
+
+  &::placeholder {
+    color: #0000004d;
+  }
+
+  &:focus {
+    background-color: #d0dce94d;
+    border: 2px solid #6ca8ee;
+  }
+
+  /* Turning off arrows on the input type "number" */
+
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  -moz-appearance: textfield;
+
+  &.invalid {
+    color: #ee6c6c;
+    background-color: #f5b5b5;
+    border: 2px solid #ee6c6c;
+  }
+}
+
+.button {
+  padding: 10px 15px;
+
+  font-weight: 500;
+
+  color: #ffffff;
+  background-color: #6ca8ee;
+  border: 2px solid #6ca8ee;
+  border-radius: 47.5px;
+
+  cursor: pointer;
+
+  transition-property: color, background-color;
+  transition-duration: 0.25s;
+
+  &:hover {
+    color: #6ca8ee;
+    background-color: #f1eee8;
+  }
+
+  &:disabled {
+    color: #c1cedc;
+    background-color: #e9e6e1;
+    border: 2px solid #c1cedc;
+
+    cursor: default;
+  }
+}
