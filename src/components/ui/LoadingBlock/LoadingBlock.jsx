@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styles from './AppLoader.module.scss';
+import styles from './LoadingBlock.module.scss';
 
-const AppLoader = () => {
+const LoadingBlock = () => {
   return (
     <div className={styles.loader}>
       <div className={styles.ldsEllipsis}>
@@ -16,4 +16,4 @@ const AppLoader = () => {
   );
 };
 
-export default AppLoader;
+export default LoadingBlock;
