@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-
 import styles from './Header.module.scss';
-
 import CatIcon from '../../../img/icons/cat-icon.svg';
 
-const Header = () => {
+const Header = ({ onGetFacts }) => {
   const [factsNumber, setFactsNumber] = useState(0);
   const [isValidFactsNumber, setIsValidFactsNumber] = useState(true);
 
@@ -19,6 +17,11 @@ const Header = () => {
     }
 
     setFactsNumber(newValue);
+  };
+
+  const handleGetFacts = () => {
+    console.log(`Send number of facts (${factsNumber}) to App.js`);
+    onGetFacts(parseInt(factsNumber));
   };
 
   return (
@@ -39,10 +42,7 @@ const Header = () => {
         />
         <button
           className={styles.button}
-          onClick={
-            (e) =>
-              console.log(`Send number of facts (${factsNumber}) to App.js`) // TODO: Put a function from App.js here instead of console.log()
-          }
+          onClick={handleGetFacts}
           disabled={!isValidFactsNumber}
         >
           Get facts
