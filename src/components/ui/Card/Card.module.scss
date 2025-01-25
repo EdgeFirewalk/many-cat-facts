@@ -1,65 +1,82 @@
 $card-width: 218px;
 $card-height: 283px;
-$card-background-color: #6CA8EE;
+$card-background-color: #6ca8ee;
 $card-color: white;
 $card-border-radius: 50px 0px 0px 0px;
 $card-margin: 20px;
-$card-transition: transform 0.9s ease;
+$card-transition: transform 0.6s ease;
 $card-cursor: pointer;
 
 .card {
   width: $card-width;
   height: $card-height;
   border-radius: $card-border-radius;
-  background-color: $card-background-color; /* Цвет фона */
-  color: $card-color; /* Цвет текста */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: $card-background-color;
+  color: $card-color;
   position: relative;
   transform-style: preserve-3d;
-  transition: $card-transition; /* Плавный переход для поворота */
-  margin: $card-margin; /* расстояние между карточками */
-  cursor: $card-cursor; /* указания, что карточка кликабельна */
+  transition: $card-transition;
+  margin: $card-margin;
+  cursor: $card-cursor;
 
-  .front, .back {
+  &:hover {
+    transform: rotateY(180deg); /* Переворачиваем карточку при наведении */
+  }
+
+  .front,
+  .back {
     width: 100%;
     height: 100%;
     position: absolute;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    backface-visibility: hidden; /* Скрываем обратную сторону при повороте */
+    backface-visibility: hidden; /* Скрываем обратную сторону */
   }
 
   .front {
-    transform: rotateY(0deg); /* Передняя сторона по умолчанию */
+    transform: rotateY(0deg); /* Лицевая сторона */
   }
 
   .back {
-    transform: rotateY(180deg); /* Обратная сторона по умолчанию */
+    transform: rotateY(180deg); /* Обратная сторона */
   }
 }
 
 .catImage {
-  width: calc(100% - 40px); /* ширина изображения с отступом */
-  height: calc(100% - 40px); /* высота изображения с отступом */
-  object-fit: cover; /* Масштабируем изображение, чтобы оно заполнило контейнер */
-  border-radius: 0px 50px 0px 0px; /* Скругляем углы изображения */
-  margin: 20px; /* Добавляем отступы вокруг изображения */
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  object-fit: cover;
+  border-radius: 50px 0px 0px 0px;
+  margin: 20px;
 }
 
 .factText {
-  font-weight: 500; /* Устанавливаем жирность текста */
-  color: #ffffff; /* Устанавливаем цвет текста */
-  margin: 30px; /* отступ сверху */
+  font-weight: 500;
+  color: #ffffff;
+  margin: 30px;
   font-size: 15px;
-  overflow-y: auto; /* вертикальная прокрутку */
-  max-height: 100%; /* Ограничиваем высоту текстового блока */
-}
+  overflow-y: auto;
+  max-height: 80%; /* Ограничиваем высоту текста */
+  padding: 10px;
+  box-sizing: border-box;
 
-.flipped {
-  transform: rotateY(180deg); /* Угол поворота при клике */
+  /* Стилизация скроллбара */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+  }
 }
