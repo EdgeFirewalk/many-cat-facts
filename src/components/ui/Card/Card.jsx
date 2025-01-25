@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import styles from './Card.module.scss'; // Подключаем стили
 
 const Card = () => {
   const [catImageUrl, setCatImageUrl] = useState('');
   const [catFact, setCatFact] = useState('');
-  const [isFlipped, setIsFlipped] = useState(false);
-  const factTextRef = useRef(null);
 
   useEffect(() => {
     const fetchCatImage = async () => {
@@ -22,6 +21,7 @@ const Card = () => {
         console.error('Error fetching cat image:', error);
       }
     };
+
     const fetchCatFact = async () => {
       try {
         const response = await fetch('https://catfact.ninja/fact');
@@ -40,36 +40,13 @@ const Card = () => {
     fetchCatFact();
   }, []);
 
-  const handleClick = () => {
-    if (factTextRef.current.scrollHeight > factTextRef.current.clientHeight) {
-      setIsFlipped(!isFlipped);
-    }
-  };
-
-  const handleMouseEnter = () => {
-    if (factTextRef.current.scrollHeight <= factTextRef.current.clientHeight) {
-      setIsFlipped(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (factTextRef.current.scrollHeight <= factTextRef.current.clientHeight) {
-      setIsFlipped(false);
-    }
-  };
-
   return (
-    <div
-      className={`${styles.card} ${isFlipped ? styles.flipped : ''}`}
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className={styles.card}>
       <div className={styles.front}>
-        <p ref={factTextRef} className={styles.factText}>{catFact}</p>
+        {catImageUrl && <img src={catImageUrl} alt="Cat" className={styles.catImage} />}
       </div>
       <div className={styles.back}>
-        {catImageUrl && <img src={catImageUrl} alt="Cat" className={styles.catImage} />}
+        <p className={styles.factText}>{catFact}</p>
       </div>
     </div>
   );
