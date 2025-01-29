@@ -1,0 +1,34 @@
+/*.wrapper{
+  flex: 1;
+}*/
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* чтобы меню оставалось наверху */
+  min-height: 100vh;
+  width: 100%; /* Растягиваем на всю ширину */
+  /*max-width: 1444px; /* Максимальная ширина сайта */
+  margin: 0 auto; /* Центрируем контейнер по горизонтали */
+}
+
+.cards-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* чтобы контейнер карточек располагался сверху */
+  width: 100%;
+  margin: 20px auto; /* для отступа от меню */
+}
+
+.cards-container {
+  /*display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(518px, 1fr)); /*  мин ширину карточки */
+  /* gap: 20px; /* расстояние между карточками */
+  /*justify-items: center;*/
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-x: hidden; /* Скрываем горизонтальную прокрутку */
+}
