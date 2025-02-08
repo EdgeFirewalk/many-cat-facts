@@ -79,16 +79,17 @@ function App() {
         <Header onGetFacts={getCatFacts} isLoading={isLoadingFacts} />
         <div className="cards-wrapper">
           <div className="cards-container">
-            {isLoadingFacts ? (
-              <LoadingBlock />
-            ) : /* Рендерим карточки на основе данных из catFacts */
-            catFacts.length > 0 ? (
-              catFacts.map((fact, index) => <Card key={index} fact={fact} />)
-            ) : hasFetched ? (
-              /* Если были запросы, но результат пустой */
-              <p className="no-cards-message">No facts were found...</p>
-            ) : null
-            /* Если запросов ещё не было, ничего не показываем */
+            {
+              isLoadingFacts ? (
+                <LoadingBlock />
+              ) : /* Рендерим карточки на основе данных из catFacts */
+              catFacts.length > 0 ? (
+                catFacts.map((fact, index) => <Card key={index} fact={fact} />)
+              ) : hasFetched ? (
+                /* Если были запросы, но результат пустой */
+                <p className="no-cards-message">No facts were found...</p>
+              ) : null
+              /* Если запросов ещё не было, ничего не показываем */
             }
           </div>
         </div>
