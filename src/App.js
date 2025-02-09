@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+
 import './App.css';
+
 import Header from './components/ui/Header/Header';
+import LoadingBlock from './components/ui/LoadingBlock/LoadingBlock';
 import Card from './components/ui/Card/Card';
 
 function App() {
+  const [isLoadingFacts, setIsLoadingFacts] = useState(false);
+
   // Состояние для хранения массива с данными о карточках
   const [catFacts, setCatFacts] = useState([]); // Убираем начальную заглушку
   const [hasFetched, setHasFetched] = useState(false); // Флаг для отслеживания выполнения запросов
 
   // Функция для обновления состояния catFacts
-  const updateFactsNumber = async (number) => {
+  const getCatFacts = async (number) => {
     try {
       if (number <= 0) {
         setCatFacts([]); // Если число меньше или равно нулю, очищаем состояние
@@ -18,6 +23,7 @@ function App() {
       }
 
       const newCatFacts = [];
+      setIsLoadingFacts(true);
 
       // Используем цикл for для последовательного выполнения запросов
       for (let i = 0; i < number; i++) {
@@ -59,6 +65,8 @@ function App() {
       // Обновляем состояние
       setCatFacts(newCatFacts);
       setHasFetched(true); // Устанавливаем флаг, что запрос был выполнен
+
+      setIsLoadingFacts(false);
     } catch (error) {
       console.error('Error fetching cat data:', error);
       setHasFetched(true); // Устанавливаем флаг даже при ошибке
@@ -68,17 +76,21 @@ function App() {
   return (
     <div className="wrapper">
       <div className="site-wrapper">
-        {/* Передаем функцию updateFactsNumber в Header */}
-        <Header onGetFacts={updateFactsNumber} />
+        <Header onGetFacts={getCatFacts} isLoading={isLoadingFacts} />
         <div className="cards-wrapper">
           <div className="cards-container">
-            {/* Рендерим карточки на основе данных из catFacts */}
-            {catFacts.length > 0 ? (
-              catFacts.map((fact, index) => <Card key={index} fact={fact} />)
-            ) : hasFetched ? ( // Если были запросы, но результат пустой
-              <p className="no-cards-message">No cards available</p>
-            ) : null}{' '}
-            {/* Если запросов ещё не было, ничего не показываем */}
+            {
+              isLoadingFacts ? (
+                <LoadingBlock />
+              ) : /* Рендерим карточки на основе данных из catFacts */
+              catFacts.length > 0 ? (
+                catFacts.map((fact, index) => <Card key={index} fact={fact} />)
+              ) : hasFetched ? (
+                /* Если были запросы, но результат пустой */
+                <p className="no-cards-message">No facts were found...</p>
+              ) : null
+              /* Если запросов ещё не было, ничего не показываем */
+            }
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ const LoadingBlock = () => {
         <div></div>
         <div></div>
       </div>
-      <p className={styles.loaderText}>Please wait...</p>
+      <p className={styles.loaderText}>Loading cards...</p>
     </div>
   );
 };

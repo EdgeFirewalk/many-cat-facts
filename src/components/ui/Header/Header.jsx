@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './Header.module.scss';
 import CatIcon from '../../../img/icons/cat-icon.svg';
 
-const Header = ({ onGetFacts }) => {
+const Header = ({ onGetFacts, isLoading }) => {
   const [factsNumber, setFactsNumber] = useState(0);
   const [isValidFactsNumber, setIsValidFactsNumber] = useState(true);
 
@@ -43,7 +43,7 @@ const Header = ({ onGetFacts }) => {
         <button
           className={styles.button}
           onClick={handleGetFacts}
-          disabled={!isValidFactsNumber}
+          disabled={!isValidFactsNumber || isLoading}
         >
           Get facts
         </button>
