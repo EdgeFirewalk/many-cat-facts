@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/many-cat-facts/static/css/main.696cb78b.css",
+    "main.js": "/many-cat-facts/static/js/main.9ec8a43a.js",
+    "static/media/cat-icon.svg": "/many-cat-facts/static/media/cat-icon.53eed57dd8529e501995b92780bb25bb.svg",
+    "index.html": "/many-cat-facts/index.html",
+    "main.696cb78b.css.map": "/many-cat-facts/static/css/main.696cb78b.css.map",
+    "main.9ec8a43a.js.map": "/many-cat-facts/static/js/main.9ec8a43a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.696cb78b.css",
+    "static/js/main.9ec8a43a.js"
+  ]
+}
