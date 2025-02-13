@@ -1,5 +1,7 @@
 # Many Cat Facts
 
+The app is available here: https://edgefirewalk.github.io/many-cat-facts/
+
 🐈 How many facts about cats do you know? Some will say 3-5, some 10 or even more.
 
 ## With our app you can get as many facts about cats as you want!
